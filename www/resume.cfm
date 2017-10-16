@@ -1,4 +1,11 @@
-<cfset mySkills = "ColdFusion,HTML5,CSS3,MySQL,JQuery" />
+<cfquery name="mySkillSet" datasource="learncfinaweek">
+	SELECT name FROM skillset ORDER BY name DESC
+</cfquery>
+<cfquery name="myResume" datasource="learncfinaweek">
+	SELECT title, startDate, endDate, details, type
+	FROM resume
+	ORDER BY type, endDate, startDate
+</cfquery>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -94,28 +101,16 @@
 						<div class="clr">
 							<div class="left">
 								<!-- Resume Listings -->
+								<cfoutput query="myResume" group="type">
 								<!-- Resume Listing Type -->
-								<h2>Work Experience <span>&nbsp;</span></h2>
-								<!-- Start Resume Listing -->
-								<h5>Senior Developer - Google Inc <span>2010 to present </span> </h5>
-								<p>Lorem ipsum dolor sit amet, habitasse pretium dolor sociis. Nulla et facilisis interdum elit amet erat, consectetuer condimentum eaque, ante maecenas Suspendisse libero diam.</p>
-								<!-- End Resume Listing -->
-								<h5>Front-End Developer -  Apple Corp<span>06-2006 to 12-2009</span></h5>
-								<p>Lorem ipsum dolor sit amet, habitasse pretium dolor sociis. Nulla et facilisis interdum elit amet erat, consectetuer condimentum eaque, ante maecenas.  </p>
-
-								<h2>Education<span class="resume-line">&nbsp;</span></h2>
-								<div  class="social-list1">
-									<ul>
-										<li>
-											<h5>The University of Texas</h5><span>1997-2002</span>
-											<p> Master of Computer Applications (MCA).Lorem ipsum dolor sit amet, consectetur adipiscing Vivamus sit amet ligula non lectus.consectetur adipiscingVivamus sit amet. </p>
-										</li>
-										<li>
-											<h5>Institue of Design</h5><span>1994-1997</span>
-											<p>Lorem ipsum dolor sit amet, adipiscing elit. egestas.Vivamus sit amet ligula non lectus cursus egestas amet ligula non lectus cursus egestas.</p> 
-										</li>
-									</ul>
-								</div>
+									<h2>#myResume.type#<span>&nbsp;</span></h2>
+									<cfoutput>
+										<!-- Start Resume Listing -->
+										<h5>#myResume.title #<span>#dateFormat(myResume.startDate, "mm/dd/yyyy")# to <cfif len(myResume.endDate)>#dateFormat(myResume.endDate, "mm/dd/yyyy")#<cfelse>present</cfif></span> </h5>
+										<p>#myResume.details#</p>
+										<!-- End Resume Listing -->
+									</cfoutput>
+								</cfoutput>
 							</div>
 							<div class="right" >
 								<h2>My Skillset</h2>
@@ -153,8 +148,8 @@
 								<div class="skills">
 									<ul>
 										<cfoutput>
-											<cfloop list="#mySkills#" index="skill">
-												<li class="#skill#" id="#skill#">#skill#</li>
+											<cfloop query="#mySkillSet#">
+												<li class="#mySkillSet.name#" id="#mySkillSet.name#">#mySkillSet.name#</li>
 											</cfloop>
 										</cfoutput>
 									</ul>
