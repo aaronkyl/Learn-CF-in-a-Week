@@ -124,7 +124,7 @@
 							</div>
 							<div class="right" >
 								<h2>Categories</h2>
-								<!-- Blog Categories -->
+								<!-- Start Blog Categories -->
 								<div id="categories" align="center">
 									<ul>
 										<cfoutput query="blogCategories">
@@ -132,6 +132,7 @@
 										</cfoutput>
 									</ul>
 								</div>
+								<!-- End Blog Categories -->
 							</div>
 						</div>
 					</div>

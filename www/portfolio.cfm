@@ -1,11 +1,6 @@
-<cfscript>
-	myPortfolio = [];
-	arrayAppend(myPortfolio,{title="Title 1",website="http://www.website1.com",image="portfolio1.png",description="Description 1"});
-	arrayAppend(myPortfolio,{title="Title 2",website="http://www.website2.com",image="portfolio2.png",description="Description 2"});
-	arrayAppend(myPortfolio,{title="Title 3",website="http://www.website3.com",image="portfolio3.png",description="Description 3"});
-	arrayAppend(myPortfolio,{title="This is a new thing",website="http://www.google.com",image="portfolio4.png",description="This is the app description"});
-	arrayAppend(myPortfolio,{title="This is a new new thing",website="http://www.google.com",image="portfolio5.png",description="This is another app description"});	
-</cfscript>
+<cfquery name="portfolio" datasource="learncfinaweek">
+	SELECT * FROM portfolio
+</cfquery>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -103,21 +98,21 @@
 							<ul id="portfolio-list">
 								<!-- Start Portfolio -->
 								<cfoutput>
-								<cfloop array="#myPortfolio#" item="portfolio">
-									<li>
-										<div class="left">
-											<a href="#portfolio.website#" title="#portfolio.title#" class="viewDetail ">
-												<img src="assets/images/portfolio/#portfolio.image#"   alt=" " border="0" />
-												<h5>#portfolio.title#</h5>
-											</a>
-										</div>
-										<div class="right">
-											<p>
-												#portfolio.description#
-											</p>
-										</div>
-									</li> 
-								</cfloop>   
+									<cfloop query="portfolio">
+										<li>
+											<div class="left">
+												<a href="#portfolio.website#" title="#portfolio.title#" class="viewDetail ">
+													<img src="assets/images/portfolio/#portfolio.image#"   alt=" " border="0" />
+													<h5>#portfolio.title#</h5>
+												</a>
+											</div>
+											<div class="right">
+												<p>
+													#portfolio.summary#
+												</p>
+											</div>
+										</li> 
+									</cfloop>   
 								</cfoutput>
 								<!-- End Portfolio -->
 							</ul>
