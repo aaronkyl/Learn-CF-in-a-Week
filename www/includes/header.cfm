@@ -39,7 +39,7 @@
 			<div class="logo-bg" >
 				<!--logo -->
 				<div class="logo">
-					<img src="assets/images/logo.png" alt="Logo" width="202" height="52" border="0"  id="logo" />
+					<a href="index.cfm"><img src="assets/images/logo.png" alt="Logo" width="202" height="52" border="0"  id="logo" /></a>
 				</div>
 				
 				<!--head right -->
@@ -65,3 +65,7 @@
 			<!--// logo bg end //-->
 		</div>
 		<!--header end -->
+        <!-- Content Start -->
+<div id="content">
+	<!--Card  -->
+	<div class="card-pattern">
