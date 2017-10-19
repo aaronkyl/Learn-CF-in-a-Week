@@ -10,17 +10,10 @@
 	};
 </cfscript>
 
-<cffunction name="convertStringToASCII" output="false" returntype="string" hint="Convert String to ASCII String">
-	<cfargument name="stringToBeConverted" type="string" required="true" />
-	<cfset var convertedString="" />
-	<cfloop from="1" to="#len(arguments.stringToBeConverted)#" index="i">
-		<cfset convertedString &= '&##' & asc(mid(arguments.StringToBeConverted,i,1)) & ';' />
-	</cfloop>
-	<cfreturn convertedString />
-</cffunction>
+<cfset utilities = CreateObject("cfc.utilities") />
 
-<cfset section="about" />
-<cfinclude template="includes/header.cfm" />
+<cfimport taglib="customTags/" prefix="layout" />
+<layout:page section="about">
 
 <!-- about -->
 <div id="about">
@@ -68,7 +61,7 @@
 			<div class="clr"><div class="input-box">Date of birth </div><span>#personalInfo.dob#</span> </div>
 			<div class="clr"><div class="input-box">Address</div><span>#personalInfo.address#</span> </div>
 			<div class="clr"><div class="input-box">Phone</div> <span>#personalInfo.phonenumber#</span> </div>
-			<div class="clr"><div class="input-box">E-mail</div><span><a href="##">#convertStringToASCII(personalInfo.email)#</a></span> </div>
+			<div class="clr"><div class="input-box">E-mail</div><span><a href="##">#utilities.convertStringToASCII(personalInfo.email)#</a></span> </div>
 			<div class="clr"><div class="input-box">Website </div> <span><a href="##">#personalInfo.website#</a></span> </div> 
 			<div class="clr"><div class="box1">Skype </div> <span><a href="##">#personalInfo.skype#</a></span> </div> 
 			</cfoutput>
@@ -77,4 +70,4 @@
 	<div class="clr"></div>
 </div><!--about end -->
 
-<cfinclude template="includes/footer.cfm" />
+</layout:page>

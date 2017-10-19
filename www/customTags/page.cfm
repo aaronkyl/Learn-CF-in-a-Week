@@ -1,5 +1,5 @@
 <cfif thisTag.executionMode EQ "start">
-    <cfparam name="section" default="home" />
+    <cfparam name="attributes.section" default="home" />
 
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -50,12 +50,12 @@
                         <div class="menu_nav">
                             <div id="nav-wrap">
                                 <ul class="arrowunderline" id="nav">
-                                    <li class="home" <cfif section EQ "home">id="selected"</cfif>><a href="index.cfm">Home</a></li>
-                                    <li class="about" <cfif section EQ "about">id="selected"</cfif>><a href="about.cfm">About</a></li>
-                                    <li class="resume" <cfif section EQ "resume">id="selected"</cfif>><a href="resume.cfm">Resume</a></li>
-                                    <li class="blog" <cfif section EQ "blog">id="selected"</cfif>><a href="blog.cfm">Blog</a></li>
-                                    <li class="portfolio" <cfif section EQ "portfolio">id="selected"</cfif>><a href="portfolio.cfm">Portfolio</a></li>
-                                    <li class="contact" <cfif section EQ "contact">id="selected"</cfif>><a href="contact.cfm">Contact</a></li>	
+                                    <li class="home" <cfif attributes.section EQ "home">id="selected"</cfif>><a href="index.cfm">Home</a></li>
+                                    <li class="about" <cfif attributes.section EQ "about">id="selected"</cfif>><a href="about.cfm">About</a></li>
+                                    <li class="resume" <cfif attributes.section EQ "resume">id="selected"</cfif>><a href="resume.cfm">Resume</a></li>
+                                    <li class="blog" <cfif attributes.section EQ "blog">id="selected"</cfif>><a href="blog.cfm">Blog</a></li>
+                                    <li class="portfolio" <cfif attributes.section EQ "portfolio">id="selected"</cfif>><a href="portfolio.cfm">Portfolio</a></li>
+                                    <li class="contact" <cfif attributes.section EQ "contact">id="selected"</cfif>><a href="contact.cfm">Contact</a></li>	
                                 </ul>
                             </div>
                         </div>
@@ -79,3 +79,4 @@
         </div>  <!--Container / wrapper end -->	
     </body>
     </html>
+</cfif>

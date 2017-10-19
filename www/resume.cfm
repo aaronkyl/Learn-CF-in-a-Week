@@ -8,8 +8,8 @@
 	ORDER BY type, endDate, startDate
 </cfquery>
 
-<cfset section="resume" />
-<cfinclude template="includes/header.cfm" />
+<cfimport taglib="customTags/" prefix="layout" />
+<layout:page section="resume">
 
 <!-- resume -->
 <div id="resume">
@@ -94,4 +94,4 @@
 	<div class="clr"></div>
 </div> <!--resume end -->
 
-<cfinclude template="includes/footer.cfm" />
+</layout:page>

@@ -1,8 +1,8 @@
 <cfset myName="Aaron" />
 <cfset myPosition = "A Developer" />
 
-<cfset section="home" />
-<cfinclude template="includes/header.cfm" />
+<cfimport taglib="customTags/" prefix="layout" />
+<layout:page section="home">
 
 <!--home -->
 <div id="home">
@@ -58,4 +58,4 @@
 </div>
 <!--home end -->
 
-<cfinclude template="includes/footer.cfm" />
+</layout:page>

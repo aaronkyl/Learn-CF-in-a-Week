@@ -21,8 +21,8 @@
 	SELECT * FROM category
 </cfquery>
 
-<cfset section="blog" />
-<cfinclude template="includes/header.cfm" />
+<cfimport taglib="customTags/" prefix="layout" />
+<layout:page section="blog">
 
 <!-- blog -->
 <div id="blog">
@@ -73,4 +73,4 @@
 	<div class="clr"></div>
 </div> <!--blog end -->
 
-<cfinclude template="includes/footer.cfm" />
+</layout:page>

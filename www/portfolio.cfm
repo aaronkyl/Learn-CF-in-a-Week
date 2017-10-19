@@ -2,8 +2,8 @@
 	SELECT * FROM portfolio
 </cfquery>
 
-<cfset section="portfolio" />
-<cfinclude template="includes/header.cfm" />
+<cfimport taglib="customTags/" prefix="layout" />
+<layout:page section="portfolio">
 
 <!-- portfolio -->
 <div id="portfolio">
@@ -57,4 +57,4 @@
 </div>
 <!-- portfolio end -->
 
-<cfinclude template="includes/footer.cfm" />
+</layout:page>
