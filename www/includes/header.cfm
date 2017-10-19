@@ -66,6 +66,6 @@
 		</div>
 		<!--header end -->
         <!-- Content Start -->
-<div id="content">
-	<!--Card  -->
-	<div class="card-pattern">
+		<div id="content">
+			<!--Card  -->
+			<div class="card-pattern">
