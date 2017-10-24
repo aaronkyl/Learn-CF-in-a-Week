@@ -12,8 +12,6 @@
 	};
 </cfscript>
 
-<cfset utilities = CreateObject("cfc.utilities") />
-
 <cfimport taglib="customTags/" prefix="layout" />
 <layout:page section="contact">
 
@@ -103,7 +101,7 @@
 				<div class="clr"><div class="input-box1">Address</div><span>#personalInfo.address#</span></div>
 				<div class="clr"> &nbsp;</div>
 				<div class="clr"><div class="input-box1">Phone</div><span>#personalInfo.phoneNumber#</span></div>
-				<div class="clr"><div class="input-box1">E-mail</div><span><a href="##">#utilities.convertStringToASCII(personalInfo.email)#</a></span>  </div>
+				<div class="clr"><div class="input-box1">E-mail</div><span><a href="##">#application.utilities.convertStringToASCII(personalInfo.email)#</a></span>  </div>
 				<div class="clr"><div class="input-box1">Skype </div> <span><a href="##">#personalInfo.skype#</a></span> </div>
 				</cfoutput>
 			</div>

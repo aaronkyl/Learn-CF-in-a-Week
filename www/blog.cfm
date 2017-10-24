@@ -1,4 +1,4 @@
-<cfquery name="myPosts" datasource="learncfinaweek">
+<cfquery name="myPosts">
 	SELECT
 		post.id AS 'postid',
 		post.title AS 'title',
@@ -17,7 +17,7 @@
 		post.id
 </cfquery>
 
-<cfquery name="blogCategories" datasource="learncfinaweek">
+<cfquery name="blogCategories">
 	SELECT * FROM category
 </cfquery>
 

@@ -1,4 +1,4 @@
-<cfquery name="portfolio" datasource="learncfinaweek">
+<cfquery name="portfolio">
 	SELECT * FROM portfolio
 </cfquery>
 
