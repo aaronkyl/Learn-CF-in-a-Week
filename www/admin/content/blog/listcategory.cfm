@@ -4,7 +4,7 @@
 <cfset adminPath = createObject('learncfinaweek.www.admin.cfc.system').getBasePath(cgi.script_name) />
 
 <!--- Pull Categories --->
-
+<cfset blogCategories = entityLoad("blogCategory") />
 <cfoutput>
 	<ct:layout section="blog">
 		<ct:navigation section="blog" active="category"/>
@@ -29,10 +29,11 @@
 						<tr>
 							<td>
 								<!--- Name --->
+								#blogCategory.name#
 							</td>
 							<td>
 								<!--- Edit Category --->
-								<a href="#adminPath#/content/blog/editcategory.cfm?id="><i class="icon-edit"></i></a>
+								<a href="#adminPath#/content/blog/editcategory.cfm?id=#blogCategory.id#"><i class="icon-edit"></i></a>
 							</td>
 						</tr>
 					</cfloop>

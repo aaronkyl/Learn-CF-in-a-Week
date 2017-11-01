@@ -9,17 +9,23 @@
 <cfset errorBean = createObject('learncfinaweek.www.admin.cfc.errorBean').init() />
 
 <cfif form.submitted>
-
 	<!--- check if data is valid--->
-	
+	<cfif !len(form.name)>
+		<cfset errorBean.addError("Name cannot be blank", "name") />
+	</cfif>
+
 	<cfif !errorBean.hasErrors()>
 		<cfif val(form.id)>
 			<!--- Edit Entity  --->
+			<cfset blogCategory = entityLoad("blogCategory", form.id, true) />
+			<cfset blogCategory.name = form.name />
 		<cfelse>
 			<!--- Create Entity --->
+			<cfset blogCategory = entityNew("blogCategory") />
+			<cfset blogCategory.name = form.name />
 		</cfif>
 		
-		<cfset entitySave(BlogCategory) />
+		<cfset entitySave(blogCategory) />
 		<cfset ormFlush() />
 		
 		<cflocation url="listcategory.cfm?message=#urlencodedformat('Blog Category Saved')#" addtoken="false" />
@@ -28,6 +34,9 @@
 
 <cfif val(url.id)>
 	<!--- Get Entity Data --->
+	<cfset blogCategory = entityLoad("blogCategory", url.id, true) />
+	<cfset form.id = blogCategory.id />
+	<cfset form.name = blogCategory.name />
 </cfif>
 
 <cfoutput>

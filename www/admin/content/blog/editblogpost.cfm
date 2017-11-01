@@ -37,8 +37,19 @@
 	<cfif !errorBean.hasErrors()>
 		<cfif val(form.id)>
 			<!--- Edit Entity  --->
+			<cfset blogPost = entityLoad("blogPost", form.id, true) />
+			<cfset blogPost.title = form.title />
+			<cfset blogPost.summary = form.summary />
+			<cfset blogPost.body = form.body />
+			<cfset blogPost.modifiedDateTime = now() />
 		<cfelse>
 			<!--- Create Entity --->
+			<cfset blogPost = entityNew("blogPost") />
+			<cfset blogPost.title = form.title />
+			<cfset blogPost.summary = form.summary />
+			<cfset blogPost.body = form.body />
+			<cfset blogPost.datePosted = form.datePosted />
+			<cfset blogPost.createdDateTime = now() />
 		</cfif>
 		
 		<cfset entitySave(blogPost) />
@@ -55,10 +66,15 @@
 
 <cfif val(url.id)>
 	<!--- Get Entity Data --->
-
+	<cfset blogPost = entityLoad("blogPost", url.id, true) />
+	<cfset form.id = blogPost.id />
+	<cfset form.title = blogPost.title />
+	<cfset form.summary = blogPost.summary />
+	<cfset form.body = blogPost.body />
+	<cfset form.datePosted = blogPost.datePosted />
 </cfif>
 
-<cfset categories = entityLoad('BlogCategory' ) />
+<cfset categories = entityLoad('blogCategory' ) />
 
 <cfoutput>
 	<ct:layout section="blog">
