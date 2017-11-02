@@ -1,21 +1,4 @@
-<cfquery name="myPosts">
-	SELECT
-		post.id AS 'postid',
-		post.title AS 'title',
-		post.summary AS 'summary',
-		post.dateposted AS 'dateposted',
-		category.name AS 'category'
-	FROM 
-		post
-	INNER JOIN
-		postcategoryjn ON postcategoryjn.postid = post.id
-	INNER JOIN
-		category ON category.id = postcategoryjn.categoryid
-	WHERE
-		post.deleted = 0
-	ORDER BY
-		post.id
-</cfquery>
+<cfset blogPosts = entityLoad("blogPost") />
 
 <cfquery name="blogCategories">
 	SELECT * FROM category
@@ -42,17 +25,19 @@
 			<div class="left">
 				<!-- Blog Posts -->
 				<!-- Start Blog Post -->
-				<cfoutput query="myPosts" group="postid">
-					<h5>
-						<span>#dateFormat(myPosts.dateposted, "mm/dd/yyyy")#</span>
-					</h5>
-					<h2>
-						<a href="blogpost.html?id=#myPosts.postid#">#myPosts.title#</a>
-					</h2>
-					<p>#myPosts.summary#</p>
-					<p class="summary">
-						<strong>Categories:</strong><cfoutput> #myPosts.category# </cfoutput><strong>Comments:</strong> 12
-					</p>
+				<cfoutput>
+					<cfloop array="#blogPosts#" index="blogPost">
+						<h5>
+							<span>#dateFormat(blogPost.datePosted, "mm/dd/yyyy")#</span>
+						</h5>
+						<h2>
+							<a href="blogpost.cfm?id=#blogPost.id#">#blogPost.title#</a>
+						</h2>
+						<p>#blogPost.summary#</p>
+						<p class="summary">
+							<!---<strong>Categories:</strong><cfoutput> #myPosts.category# </cfoutput>---><strong>Comments:</strong> #arrayLen(blogPost.getComments())#
+						</p>
+					</cfloop>
 				</cfoutput>
 				<!-- End Blog Post -->
 			</div>
